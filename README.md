@@ -2,7 +2,7 @@
 
 ## second web application
 
-[Hosted at](https://fwb16goli.herokuapp.com/)
+[Hosted at](https://db16goli.herokuapp.com/)
 
 Class - Hotels class Hotels{
 constructor(roomType, price, location){ 
