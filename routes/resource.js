@@ -16,7 +16,7 @@ router.put('/Hotels/:id', Hotels_controller.Hotels_update_put);
 // GET request for one Costume.
 router.get('/Hotels/:id', Hotels_controller.Hotels_detail);
 // GET request for list of all Costume items.
-router.get('/Hotels', Hotels_controller.Hotels_list);
+router.get('/Hotels', Hotels_controller.Hotels_view_all_Page);
 /* GET create costume page */
 router.get('/create', Hotels_controller.Hotels_create_Page);
 module.exports = router;

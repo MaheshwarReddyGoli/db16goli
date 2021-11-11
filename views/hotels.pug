@@ -1,15 +1,27 @@
 extends layout
 
 block content
+  - let create = `dispatch(\"/Hotels/create\")`
+  button.btn(class="btn-secondary ml-1", onclick= create) create
   h1= title
-  - let hotels = [{roomType:"Delux", price: 100, location:"5 th Floor"},{roomType:"Suite", price: 200, location:"3 rd Floor"},{roomType:"Super Delux", price: 400, location:"1 st floor"}]
+  - let hotels=results 
   div(class="container-fluid mt-3")
   div(class="row")
     each hotel,index in hotels
-        div(class="col-sm-2"   onclick=`buy(${index})`) #{hotel.roomType} - #{hotel.price} - #{hotel.location}
+      - let destination = `dispatch(\"/Hotels/update?id=${hotel._id}\")`
+      - let detail = `dispatch(\"/Hotels/detail?id=${hotel._id}\")`
+      - let del = `dispatch(\"/Hotels/delete?id=${hotel._id}\")`
+        div(class="row-sm-2",class="m-1") #{hotel.roomType} - #{hotel.price} - #{hotel.location}
+          button.btn(class="btn-primary ml-1", onclick= destination) Update
+          button.btn(class="btn-success ml-1", onclick= detail) View
+          button.btn(class="btn-danger ml-1", onclick= del) delete
+          
   script.
-     
+      function dispatch(path){
+      window.location.href=path
+      }
       function buy(itemNo)
       {
         alert(`You purchased Item ${itemNo+1}`)
       }
+ 

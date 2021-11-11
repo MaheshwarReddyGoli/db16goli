@@ -96,7 +96,7 @@ exports.Hotels_view_one_Page = async function(req, res) {
 exports.Hotels_view_all_Page = async function(req, res) {
     try {
         theHotels = await Hotels.find();
-        res.render('Hotels', { title: 'Hotels Search Results', results: theHotels });
+        res.render('hotels', { title: 'Hotels Search Results', results: theHotels });
     } catch (err) {
         res.error(500, `{"error": ${err}}`);
     }
