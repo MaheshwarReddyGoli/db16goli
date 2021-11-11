@@ -9,7 +9,50 @@ var usersRouter = require('./routes/users');
 var hotelsRouter = require('./routes/hotels');
 var addmodsRouter = require('./routes/addmods');
 var selectorRouter = require('./routes/selector');
+var Hotels = require("./models/Hotels");
+var resourceRouter = require('./routes/resource');
 
+// We can seed the collection if needed on server start
+async function recreateDB() {
+    // Delete everything
+    await Hotels.deleteMany();
+    let instance1 = new Hotels({
+        roomType: "Deluxe",
+        price: 100,
+        location: "5 th Floor"
+    });
+    instance1.save(function(err, doc) {
+        if (err) return console.error(err);
+        console.log("First object saved")
+    });
+    let instance2 = new Hotels({
+        roomType: "Premium",
+        price: 200,
+        location: "3 rd Floor"
+    });
+    instance2.save(function(err, doc) {
+        if (err) return console.error(err);
+        console.log("Second object saved")
+    });
+    let instance3 = new Hotels({
+        roomType: "Super Delux",
+        price: 400,
+        location: "1 st Floor"
+    });
+    instance3.save(function(err, doc) {
+        if (err) return console.error(err);
+        console.log("Third object saved")
+    });
+}
+let reseed = true;
+if (reseed) { recreateDB(); }
+const connectionString =
+    process.env.MONGO_CON
+mongoose = require('mongoose');
+mongoose.connect(connectionString, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+});
 var app = express();
 
 // view engine setup
@@ -27,6 +70,7 @@ app.use('/users', usersRouter);
 app.use('/hotels', hotelsRouter);
 app.use('/addmods', addmodsRouter);
 app.use('/selector', selectorRouter);
+app.use('/resource', resourceRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
