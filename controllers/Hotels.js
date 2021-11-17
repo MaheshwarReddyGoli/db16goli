@@ -86,7 +86,7 @@ exports.Hotels_view_one_Page = async function(req, res) {
     console.log("single view for id " + req.query.id)
     try {
         result = await Hotels.findById(req.query.id)
-        res.render('HotelDetail', { title: 'Hotel Detail', toShow: result });
+        res.render('hoteldetail', { title: 'Hotel Detail', toShow: result });
     } catch (err) {
         res.status(500)
         res.send(`{'error': '${err}'}`);
@@ -109,7 +109,7 @@ exports.Hotels_view_all_Page = async function(req, res) {
 exports.Hotels_create_Page = function(req, res) {
     console.log("create view")
     try {
-        res.render('Hotelcreate', { title: 'Hotels Create' });
+        res.render('hotelcreate', { title: 'Hotels Create' });
     } catch (err) {
         res.status(500)
         res.send(`{'error': '${err}'}`);
@@ -123,7 +123,7 @@ exports.Hotels_update_Page = async function(req, res) {
     console.log("update view for item " + req.query.id)
     try {
         let result = await Hotels.findById(req.query.id)
-        res.render('Hotelupdate', { title: 'Hotels Update', toShow: result });
+        res.render('hotelupdate', { title: 'Hotels Update', toShow: result });
     } catch (err) {
         res.status(500)
         res.send(`{'error': '${err}'}`);
@@ -134,7 +134,7 @@ exports.Hotels_delete_Page = async function(req, res) {
     console.log("Delete view for id " + req.query.id)
     try {
         result = await Hotels.findById(req.query.id)
-        res.render('Hoteldelete', { title: 'Hotel Delete', toShow: result });
+        res.render('hoteldelete', { title: 'Hotel Delete', toShow: result });
     } catch (err) {
         res.status(500)
         res.send(`{'error': '${err}'}`);

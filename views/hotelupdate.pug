@@ -1,0 +1,48 @@
+extends layout
+
+block content
+  h1= title
+  if (toShow == null)
+    h2 No instance to update
+  else
+    - let hotelid = toShow._id
+    - let roomType = toShow.roomType
+    - let price = toShow.price
+    - let location = toShow.location
+    
+    div.row(class='mb-2')
+        div.mr-1 ID is
+        div #{hotelid}
+    - let actionid = "/resource/hotels/" + hotelid
+    form(id='HotelForm', action= actionid, method="PUT")
+        div.form-group
+            label.costumeAttr(for='roomType') Room Type
+            input#roomType(type='text', name='roomType', value= roomType )
+        div.form-group
+            label.costumeAttr(for='price') Room Price
+            input#price(type='number', name='price', value= price )
+        div.form-group
+            label.costumeAttr(for='location') Hotel Location
+            input#habitat(type='text', name='location', value= location )
+
+        input(type="submit")
+
+    script.
+        document.forms['HotelForm'].addEventListener('submit', (event) => {
+        event.preventDefault();
+        console.log(event.target)
+        // TODO do something here to show user that form is being submitted
+        fetch(event.target.action, {
+            method: 'PUT',
+            body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+        }).then((resp) => {
+            return resp.json(); // or resp.text() or whatever the server sends
+        }).then((body) => {
+            alert("Update succeded")
+            window.location.href='/hotels'
+            // TODO handle body
+        }).catch((error) => {
+            // TODO handle error
+            alert("Update failed " + error )
+        });
+        });

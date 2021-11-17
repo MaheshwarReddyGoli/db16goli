@@ -1,8 +1,42 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    padding: 50px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
-  color: #00B7FF;
+    color: #00B7FF;
+}
+
+.costumeAttr {
+    background-color: coral;
+    width: 100px;
+}
+
+.costumeAttr {
+    width: 200px;
+    margin: 10px;
+    text-align: center;
+    color: black;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#title {
+    color: #123456;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.values {
+    margin-right: 2px;
+    margin-bottom: 0;
+    padding: 10px;
+    justify-content: center;
+    font-weight: bold;
+    background-color: azure;
+    border-radius: 1px;
+}
+
+.values:hover {
+    background-color: chartreuse;
+    color: black;
 }
