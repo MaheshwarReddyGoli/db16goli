@@ -14,7 +14,7 @@ block content
         label.costumeAttr(for='location') Hotel Location
         input#size(type='text', name='location')
 
-    input(type="submit")
+    button(class="btn btn-danger" type='submit') Create
 
   script.
     document.forms['HotelForm'].addEventListener('submit', (event) => {
@@ -28,6 +28,7 @@ block content
         return resp.json(); // or resp.text() or whatever the server sends
       }).then((body) => {
         alert("Save succeded")
+        window.location.href='/hotels'
         // TODO handle body
       }).catch((error) => {
         // TODO handle error
