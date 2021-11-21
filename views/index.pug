@@ -1,20 +1,12 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
-  P Second Assignment 
-  button(type="button", class="btn btn-danger",onclick="update()") Press Me
-    
-  p 
-  div(id="target") Display
- 
-  script.
-    var client_count=0;
-    function update(){
-      client_count+=1;
-      
-      document.getElementById("target").innerHTML="Value Now "+client_count  ;
-    } 
-
-  a(href="hotels") Go to Hotels Page
+  if(!user)
+    a(href='/login') Login 
+    br
+    a(href='/register') Register 
+  if(user)
+    p You are currently logged in as #{user.username}
+    a(href='/hotels') Take me to Hotels 
+    br
+    a(href='/logout') Logout
