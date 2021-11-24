@@ -11,10 +11,10 @@ block content
       - let destination = `dispatch(\"/hotels/update?id=${hotel._id}\")`
       - let detail = `dispatch(\"/Hotels/detail?id=${hotel._id}\")`
       - let del = `dispatch(\"/Hotels/delete?id=${hotel._id}\")`
-        div(class="col-md-6" class="m-1"  onclick=`buy(${index})`) #{hotel.roomType} - #{hotel.price} - #{hotel.location}
-        button.btn(class="btn-danger m-1", onclick= destination) Update
-        button.btn(class="btn-danger ml-1", onclick= detail) View
-        button.btn(class="btn-danger ml-1", onclick= del) Delete
+        div(class="container col-md-6" class="m-1"  onclick=`buy(${index})`) #{hotel.roomType} - #{hotel.price} - #{hotel.location}
+          button.btn(class="btn-primary m-1", onclick= destination) Update
+          button.btn(class="btn-info m-1", onclick= detail) View
+          button.btn(class="btn-danger m-1", onclick= del) Delete
   script.
      
       function buy(itemNo)

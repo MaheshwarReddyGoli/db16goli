@@ -25,7 +25,7 @@ block content
             label.costumeAttr(for='location') Hotel Location
             input#habitat(type='text', name='location', value= location )
 
-        input(type="submit")
+        button(class="btn-Success", onclick= submit) Update
 
     script.
         document.forms['HotelForm'].addEventListener('submit', (event) => {
